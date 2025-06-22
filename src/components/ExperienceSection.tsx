@@ -56,7 +56,7 @@ const ExperienceSection = ( { id }: { id: string }) => {
     const educationTimelines = gsap.utils.toArray(".education .timeline-item");
     const workTimelines = gsap.utils.toArray(".work .timeline-item");
 
-    const animateTimelines = (timelines) => {
+    const animateTimelines = (timelines:Element[]) => {
       timelines.forEach((timeline, index) => {
         const border = timeline.querySelector(".border-animate");
         const icon = timeline.querySelector(".icon-wrapper");
