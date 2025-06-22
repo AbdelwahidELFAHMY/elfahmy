@@ -1,7 +1,6 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Head from "next/head";
+import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata } from "next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,29 +12,37 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// ✅ Définition SEO correcte
+export const metadata: Metadata = {
+  title: "L'FAHMY",
+  description:
+    "Discover my projects built with React, Java Spring Boot, and Next.js.",
+  icons: {
+    icon: "/logo.png", 
+  },
+  openGraph: {
+    title: "Abdelwahid El-Fahmy - Software Engineer",
+    description:
+      "Discover my projects built with React, Java Spring Boot, and Next.js.",
+    url: "https://abdelwahid.elfahmy.vercel.app",
+    type: "website",
+    locale: "en_US",
+    images: [
+      {
+        url: "/photo.jpg",
+        alt: "Preview image",
+      },
+    ],
+  },
+};
+
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en" className="chromane-sonic-dark">
-      <Head>
-        <title>Mon Portfolio - Développeur Web</title>
-        <meta property="og:type" content="website" />
-        <meta property="og:locale" content="en_US" />
-
-        <meta
-          property="og:title"
-          content="Abdelwahid El-Fahmy - software engineer"
-        />
-        <meta
-          property="og:description"
-          content="Discover my projects built with React, Java Spring Boot, and Next.js."
-        />
-        <meta property="og:image" content="/photo.jpg" />
-        <meta property="og:url" content="https://abdelwahid.elfahmy.vercel.app" />
-      </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
