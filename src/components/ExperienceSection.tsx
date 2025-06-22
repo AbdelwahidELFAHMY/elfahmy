@@ -51,26 +51,38 @@ const work = [
   },
 ];
 
-const ExperienceSection = ( { id }: { id: string }) => {
+const ExperienceSection = ({ id }: { id: string }) => {
   useEffect(() => {
     const educationTimelines = gsap.utils.toArray(".education .timeline-item");
     const workTimelines = gsap.utils.toArray(".work .timeline-item");
 
-    const animateTimelines = (timelines:Element[]) => {
+    const animateTimelines = (timelines: Element[]) => {
       timelines.forEach((timeline, index) => {
         const border = timeline.querySelector(".border-animate");
         const icon = timeline.querySelector(".icon-wrapper");
 
-        let targetHeight;
+        if (!icon || !border) return; // <-- validation importante
+
+        let targetHeight: number;
+
         if (index < timelines.length - 1) {
           const nextTimeline = timelines[index + 1];
-          const currentIcon = icon.getBoundingClientRect();
-          const nextIcon = nextTimeline.querySelector(".icon-wrapper").getBoundingClientRect();
-          targetHeight = nextIcon.top - currentIcon.top - (currentIcon.height / 2) + (nextIcon.height / 2);
+          const nextIcon = nextTimeline.querySelector(".icon-wrapper");
+          if (!nextIcon) return;
+
+          const currentIconRect = icon.getBoundingClientRect();
+          const nextIconRect = nextIcon.getBoundingClientRect();
+
+          targetHeight =
+            nextIconRect.top -
+            currentIconRect.top -
+            currentIconRect.height / 2 +
+            nextIconRect.height / 2;
         } else {
           const timelineRect = timeline.getBoundingClientRect();
           const iconRect = icon.getBoundingClientRect();
-          targetHeight = timelineRect.bottom - iconRect.top - (iconRect.height / 2);
+          targetHeight =
+            timelineRect.bottom - iconRect.top - iconRect.height / 2;
         }
 
         gsap.fromTo(
@@ -82,8 +94,11 @@ const ExperienceSection = ( { id }: { id: string }) => {
             ease: "power2.out",
             scrollTrigger: {
               trigger: timeline,
-              start: "top 90%", 
-              end: index < timelines.length - 1 ? `+=${targetHeight}` : "bottom 90%",
+              start: "top 90%",
+              end:
+                index < timelines.length - 1
+                  ? `+=${targetHeight}`
+                  : "bottom 90%",
               scrub: 1,
               toggleActions: "play none none none",
               onUpdate: (self) => {
@@ -128,7 +143,10 @@ const ExperienceSection = ( { id }: { id: string }) => {
   }, []);
 
   return (
-    <section id={id} className="w-full max-w-7xl mx-auto my-12 sm:my-16 md:my-20 px-6 sm:px-8 lg:px-10 relative">
+    <section
+      id={id}
+      className="w-full max-w-7xl mx-auto my-12 sm:my-16 md:my-20 px-6 sm:px-8 lg:px-10 relative"
+    >
       <GradientGlowDecor
         side="left"
         top="10%"
@@ -142,7 +160,10 @@ const ExperienceSection = ( { id }: { id: string }) => {
           </h4>
           <ol className="relative border-l-2 border-slate-500 pl-8 sm:pl-10 space-y-8 sm:space-y-10 lg:space-y-12">
             {education.map((exp, idx) => (
-              <li key={`${exp.title}-${idx}`} className="relative  group timeline-item">
+              <li
+                key={`${exp.title}-${idx}`}
+                className="relative  group timeline-item"
+              >
                 <span className="border-animate absolute top-[12px] sm:top-[14px]  left-[-34px] sm:left-[-42px] w-[2px] bg-amber-200" />
                 <span className="icon-wrapper absolute -left-[44px] sm:-left-[56px] top-0 flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-emerald-400 rounded-full ring-2 ring-green-600 shadow-md">
                   <exp.icon size={16} className="text-white sm:w-5 sm:h-5" />
@@ -167,7 +188,10 @@ const ExperienceSection = ( { id }: { id: string }) => {
           </h4>
           <ol className="relative border-l-2 border-slate-500 pl-8 sm:pl-10 space-y-8 sm:space-y-10 lg:space-y-12">
             {work.map((exp, idx) => (
-              <li key={`${exp.title}-${idx}`} className="relative group timeline-item">
+              <li
+                key={`${exp.title}-${idx}`}
+                className="relative group timeline-item"
+              >
                 <span className="border-animate absolute top-[12px] sm:top-[14px] left-[-34px] sm:left-[-42px] w-[2px] bg-purple-300" />
                 <span className="icon-wrapper absolute -left-[44px] sm:-left-[56px] top-0 flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-fuchsia-400 rounded-full ring-2 ring-rose-700 shadow-md">
                   <exp.icon size={16} className="text-white sm:w-5 sm:h-5" />
