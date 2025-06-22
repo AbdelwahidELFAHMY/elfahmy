@@ -20,7 +20,15 @@ const projects = [
       "An internship management platform designed for enterprises. It streamlines the entire internship lifecycle, from application tracking and candidate evaluation to intern onboarding and progress monitoring.",
     image: "/projects/stageLike.png",
     link: "https://github.com/AbdelwahidELFAHMY/gestion-stagiaires",
-    stack: ["Java", "Spring Boot", "React", "Vite", "Redux", "Tailwind", "MySQL"],
+    stack: [
+      "Java",
+      "Spring Boot",
+      "React",
+      "Vite",
+      "Redux",
+      "Tailwind",
+      "MySQL",
+    ],
   },
   {
     id: 2,
@@ -29,7 +37,16 @@ const projects = [
       "Pharmacie Online is a web application that allows patients to submit prescriptions, track their preparation, and receive real-time updates, while pharmacists manage and process orders efficiently.",
     image: "/projects/pharmacieOnline.png",
     link: "https://github.com/AbdelwahidELFAHMY/PharmacieOnline",
-    stack: ["Java", "JEE", "EJB", "React", "Tailwind", "JavaScript", "MySQL", "JPA Hibernate"],
+    stack: [
+      "Java",
+      "JEE",
+      "EJB",
+      "React",
+      "Tailwind",
+      "JavaScript",
+      "MySQL",
+      "JPA Hibernate",
+    ],
   },
   {
     id: 3,
@@ -60,12 +77,12 @@ const projects = [
   },
 ];
 
-const ProjectsSection = ( { id }: { id: string }) => {
+const ProjectsSection = ({ id }: { id: string }) => {
   useEffect(() => {
-
     gsap.utils.toArray(".atropos-card").forEach((card, index) => {
+      const element = card as HTMLElement; 
       gsap.fromTo(
-        card,
+        element,
         {
           opacity: 0,
           y: 30,
@@ -78,11 +95,11 @@ const ProjectsSection = ( { id }: { id: string }) => {
           duration: 0.7,
           ease: "power3.out",
           scrollTrigger: {
-            trigger: card,
-            start: "top 90%", 
+            trigger: element,
+            start: "top 90%",
             toggleActions: "play none none none",
           },
-          delay: index * 0.15, 
+          delay: index * 0.15,
         }
       );
     });
@@ -112,9 +129,9 @@ const ProjectsSection = ( { id }: { id: string }) => {
           <Atropos
             key={p.id}
             className="atropos-card"
-            activeOffset={8} 
+            activeOffset={8}
             shadowScale={0}
-            rotateXMax={15} 
+            rotateXMax={15}
             rotateYMax={15}
             style={{ display: "flex", flexDirection: "column" }}
           >
@@ -136,7 +153,10 @@ const ProjectsSection = ( { id }: { id: string }) => {
                   }}
                 />
               </div>
-              <div className="p-3 sm:p-4 md:p-5 flex-1 flex flex-col" data-atropos-offset="3">
+              <div
+                className="p-3 sm:p-4 md:p-5 flex-1 flex flex-col"
+                data-atropos-offset="3"
+              >
                 <h4 className="text-base sm:text-lg md:text-xl font-bold text-fuchsia-400 mb-1 sm:mb-2">
                   {p.title}
                 </h4>
