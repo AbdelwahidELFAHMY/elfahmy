@@ -53,8 +53,12 @@ const work = [
 
 const ExperienceSection = ({ id }: { id: string }) => {
   useEffect(() => {
-    const educationTimelines = gsap.utils.toArray(".education .timeline-item");
-    const workTimelines = gsap.utils.toArray(".work .timeline-item");
+    const educationTimelines = gsap.utils.toArray(
+      ".education .timeline-item"
+    ) as Element[];
+    const workTimelines = gsap.utils.toArray(
+      ".work .timeline-item"
+    ) as Element[];
 
     const animateTimelines = (timelines: Element[]) => {
       timelines.forEach((timeline, index) => {
