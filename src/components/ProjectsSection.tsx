@@ -4,14 +4,11 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import { FolderGit2 } from "lucide-react";
 import GradientGlowDecor from "./GradientGlowDecor";
-import Atropos from "atropos/react";
-import "atropos/css";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Deduplicated and indexed projects for unique keys
 const projects = [
   {
     id: 1,
@@ -79,15 +76,11 @@ const projects = [
 
 const ProjectsSection = ({ id }: { id: string }) => {
   useEffect(() => {
-    gsap.utils.toArray(".atropos-card").forEach((card, index) => {
+    gsap.utils.toArray(".project-card").forEach((card, index) => {
       const element = card as HTMLElement;
       gsap.fromTo(
         element,
-        {
-          opacity: 0,
-          y: 30,
-          scale: 0.95,
-        },
+        { opacity: 0, y: 30, scale: 0.95 },
         {
           opacity: 1,
           y: 0,
@@ -126,69 +119,51 @@ const ProjectsSection = ({ id }: { id: string }) => {
       </h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-9">
         {projects.map((p) => (
-          <Atropos
+          <div
             key={p.id}
-            className="atropos-card"
-            activeOffset={8}
-            shadowScale={0}
-            rotateXMax={15}
-            rotateYMax={15}
-            style={{ display: "flex", flexDirection: "column" }}
+            className="project-card flex flex-col bg-transparent border border-fuchsia-900 rounded-xl sm:rounded-2xl overflow-hidden"
           >
-            <div
-              className="bg-transparent border border-fuchsia-900 rounded-xl sm:rounded-2xl overflow-hidden flex flex-col atropos-inner"
-              data-atropos-offset="2"
-            >
-              <div
-                className="relative w-full aspect-[16/9] sm:aspect-[2/1] bg-black/30"
-                data-atropos-offset="5"
-              >
-                <Image
-                  src={p.image}
-                  alt={p.title}
-                  fill
-                  className="object-cover"
-                  onError={(e) => {
-                    e.currentTarget.src = "/fallback-image.png";
-                  }}
-                />
-              </div>
-              <div
-                className="p-3 sm:p-4 md:p-5 flex-1 flex flex-col"
-                data-atropos-offset="3"
-              >
-                <h4 className="text-base sm:text-lg md:text-xl font-bold text-fuchsia-400 mb-1 sm:mb-2">
-                  {p.title}
-                </h4>
-                <p className="text-slate-300 text-justify text-xs sm:text-sm md:text-base mb-2 sm:mb-3">
-                  {p.description}
-                </p>
-                <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 sm:mb-3">
-                  {p.stack.map((s) => (
-                    <span
-                      key={s}
-                      className="text-xs sm:text-sm text-blue-200 bg-blue-800/30 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded"
-                      data-atropos-offset="1"
-                    >
-                      {s}
-                    </span>
-                  ))}
-                </div>
-                <a
-                  href={p.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-auto flex items-center justify-center gap-1.5 sm:gap-2 bg-transparent border-[0.5px] border-fuchsia-800 p-1.5 sm:p-2 rounded-lg text-fuchsia-400 font-semibold hover:text-fuchsia-200 transition text-xs sm:text-sm"
-                  data-atropos-offset="2"
-                >
-                  GitHub Repo{" "}
-                  <span className="w-4 h-4 sm:w-5 sm:h-5">
-                    <FolderGit2 className="w-full h-full" />
-                  </span>
-                </a>
-              </div>
+            <div className="relative w-full aspect-[16/9] sm:aspect-[2/1] bg-black/30">
+              <Image
+                src={p.image}
+                alt={p.title}
+                fill
+                className="object-cover"
+                onError={(e) => {
+                  e.currentTarget.src = "/fallback-image.png";
+                }}
+              />
             </div>
-          </Atropos>
+            <div className="p-3 sm:p-4 md:p-5 flex-1 flex flex-col">
+              <h4 className="text-base sm:text-lg md:text-xl font-bold text-fuchsia-400 mb-1 sm:mb-2">
+                {p.title}
+              </h4>
+              <p className="text-slate-300 text-justify text-xs sm:text-sm md:text-base mb-2 sm:mb-3">
+                {p.description}
+              </p>
+              <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 sm:mb-3">
+                {p.stack.map((s) => (
+                  <span
+                    key={s}
+                    className="text-xs sm:text-sm text-blue-200 bg-blue-800/30 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded"
+                  >
+                    {s}
+                  </span>
+                ))}
+              </div>
+              <a
+                href={p.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-auto flex items-center justify-center gap-1.5 sm:gap-2 bg-transparent border-[0.5px] border-fuchsia-800 p-1.5 sm:p-2 rounded-lg text-fuchsia-400 font-semibold hover:text-fuchsia-200 transition text-xs sm:text-sm"
+              >
+                GitHub Repo{" "}
+                <span className="w-4 h-4 sm:w-5 sm:h-5">
+                  <FolderGit2 className="w-full h-full" />
+                </span>
+              </a>
+            </div>
+          </div>
         ))}
       </div>
     </section>
