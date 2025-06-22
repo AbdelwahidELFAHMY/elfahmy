@@ -80,7 +80,7 @@ const projects = [
 const ProjectsSection = ({ id }: { id: string }) => {
   useEffect(() => {
     gsap.utils.toArray(".atropos-card").forEach((card, index) => {
-      const element = card as HTMLElement; 
+      const element = card as HTMLElement;
       gsap.fromTo(
         element,
         {
@@ -181,7 +181,10 @@ const ProjectsSection = ({ id }: { id: string }) => {
                   className="mt-auto flex items-center justify-center gap-1.5 sm:gap-2 bg-transparent border-[0.5px] border-fuchsia-800 p-1.5 sm:p-2 rounded-lg text-fuchsia-400 font-semibold hover:text-fuchsia-200 transition text-xs sm:text-sm"
                   data-atropos-offset="2"
                 >
-                  GitHub Repo <FolderGit2 size={14} sm={16} />
+                  GitHub Repo{" "}
+                  <span className="w-4 h-4 sm:w-5 sm:h-5">
+                    <FolderGit2 className="w-full h-full" />
+                  </span>
                 </a>
               </div>
             </div>
