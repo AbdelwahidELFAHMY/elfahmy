@@ -60,7 +60,7 @@ const projects = [
   },
 ];
 
-const ProjectsSection = ( id : string) => {
+const ProjectsSection = ( { id }: { id: string }) => {
   useEffect(() => {
 
     gsap.utils.toArray(".atropos-card").forEach((card, index) => {

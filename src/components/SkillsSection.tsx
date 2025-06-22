@@ -54,7 +54,7 @@ const skillCategories = [
   },
 ];
 
-const SkillsSection = ( id : string) => {
+const SkillsSection = ( { id }: { id: string }) => {
   useEffect(() => {
     gsap.utils.toArray(".category-header").forEach((header) => {
       gsap.fromTo(

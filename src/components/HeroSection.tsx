@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const NAME : string = "ABDELWAHID EL-FAHMY";
 
-const HeroSection = ( id :string) => {
+const HeroSection = ( { id }: { id: string }) => {
   const [displayedName, setDisplayedName] = useState("");
   const [typingDone, setTypingDone] = useState(false);
   const nameRef = useRef<HTMLSpanElement>(null);
