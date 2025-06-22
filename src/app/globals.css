@@ -5,11 +5,6 @@
   height: 300px;
 }
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -17,11 +12,20 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+
+:root {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+.light {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
 body {
@@ -191,56 +195,8 @@ body {
   animation: icon-glow 7.7s ease-in-out infinite alternate;
 }
 
-/* From Uiverse.io by iZOXVL */
-.boton-elegante {
-  padding: 15px 30px;
-  border: 2px solid #2c2c2c;
-  background-color: #1a1a1a;
-  color: #ffffff;
-  font-size: 1.2rem;
-  cursor: pointer;
-  border-radius: 30px;
-  transition: all 0.4s ease;
-  outline: none;
-  position: relative;
-  overflow: hidden;
-  font-weight: bold;
-}
 
-.boton-elegante::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.25) 0%,
-    rgba(255, 255, 255, 0) 70%
-  );
-  transform: scale(0);
-  transition: transform 0.5s ease;
-}
 
-.boton-elegante:hover::after {
-  transform: scale(4);
-}
-
-.boton-elegante:hover {
-  border-color: #666666;
-  background: #292929;
-}
-
-.atropos-card {
-  width: 100%;
-  height: 100%;
-}
-
-.atropos-inner {
-  border-radius: 1rem; /* Matches rounded-2xl */
-  overflow: hidden;
-}
 
 .blinking-cursor {
   animation: blink 1s steps(1) infinite;
@@ -360,7 +316,7 @@ body {
   top: 10%;
   width: 2px;
   background: linear-gradient(to bottom, transparent, currentColor); /* Dégradé pour un effet fluide */
-  transition: box-shadow 0.3s ease; /* Transition douce pour l'ombre */
+  transition: box-shadow 1s ease; /* Transition douce pour l'ombre */
 }
 
 .border-animate::after {
@@ -374,8 +330,8 @@ body {
   background: currentColor; /* Hérite de la couleur de la bordure (amber ou purple) */
   border-radius: 50%;
   box-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor; /* Effet de lueur */
-  opacity: 0; /* Masqué par défaut */
-  transition: opacity 0.3s ease;
+  opacity: 0.3; /* Masqué par défaut */
+  transition: opacity 1.5s ease;
 }
 
 .border-animate.active::after {

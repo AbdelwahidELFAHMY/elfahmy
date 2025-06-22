@@ -122,7 +122,7 @@ const ExperienceSection = ({ id }: { id: string }) => {
           {
             scale: 1,
             opacity: 1,
-            duration: 0.5,
+            duration: 1.5,
             ease: "back.out(1.7)",
             scrollTrigger: {
               trigger: timeline,
