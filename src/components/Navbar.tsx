@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -18,18 +17,24 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("#home");
 
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, to: string) => {
+  const scrollToSection = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    to: string
+  ) => {
     e.preventDefault();
     const section = document.querySelector(to);
     if (section) {
-      const navbarHeight = document.querySelector(".navbar")?.offsetHeight || 80;
+      const navbarElement = document.querySelector(
+        ".navbar"
+      ) as HTMLElement | null;
+      const navbarHeight = navbarElement?.offsetHeight || 80;
       const sectionTop = section.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({
         top: sectionTop - navbarHeight,
         behavior: "smooth",
       });
       setActiveSection(to);
-      setIsOpen(false); 
+      setIsOpen(false);
     } else {
       console.warn(`Section ${to} not found`);
     }
@@ -46,7 +51,7 @@ const Navbar = () => {
       },
       {
         threshold: 0.2,
-        rootMargin: "-100px 0px -50% 0px", 
+        rootMargin: "-100px 0px -50% 0px",
       }
     );
 
@@ -75,9 +80,17 @@ const Navbar = () => {
       const navbar = document.querySelector(".navbar");
       if (navbar) {
         if (window.scrollY > 50) {
-          navbar.classList.add("bg-gradient-to-b", "from-[#151929]/90", "to-[#181c2a]/90");
+          navbar.classList.add(
+            "bg-gradient-to-b",
+            "from-[#151929]/90",
+            "to-[#181c2a]/90"
+          );
         } else {
-          navbar.classList.remove("bg-gradient-to-b", "from-[#151929]/90", "to-[#181c2a]/90");
+          navbar.classList.remove(
+            "bg-gradient-to-b",
+            "from-[#151929]/90",
+            "to-[#181c2a]/90"
+          );
         }
       }
     };
