@@ -337,3 +337,12 @@ body {
 .border-animate.active::after {
   opacity: 1;
 }
+
+
+
+
+.react-hot-toast-progress {
+  background: #ec4899 !important; 
+  height: 4px !important;         
+  border-radius: 2px;
+}

@@ -5,6 +5,7 @@ import { Mail, MessageSquare, Send, User2 } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import emailjs from "@emailjs/browser";
+import toast, { Toaster } from "react-hot-toast";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,16 +16,11 @@ const ContactSection = ({ id }: { id: string }) => {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [successMessage, setSuccessMessage] = useState(false);
 
   useEffect(() => {
     gsap.fromTo(
       ".contact-title",
-      {
-        opacity: 0,
-        rotation: -10,
-        y: 50,
-      },
+      { opacity: 0, rotation: -10, y: 50 },
       {
         opacity: 1,
         rotation: 0,
@@ -39,33 +35,10 @@ const ContactSection = ({ id }: { id: string }) => {
       }
     );
 
-    if (successMessage) {
-      gsap.fromTo(
-        ".success-message",
-        { opacity: 0, y: 20 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.5,
-          ease: "power2.out",
-        }
-      );
-      const timeout = setTimeout(() => {
-        gsap.to(".success-message", {
-          opacity: 0,
-          y: -20,
-          duration: 0.5,
-          ease: "power2.in",
-          onComplete: () => setSuccessMessage(false),
-        });
-      }, 10000);
-      return () => clearTimeout(timeout);
-    }
-
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, [successMessage]);
+  }, []);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -86,13 +59,14 @@ const ContactSection = ({ id }: { id: string }) => {
     emailjs.send(serviceId, templateId, formData, publicKey).then(
       () => {
         setIsSubmitting(false);
-        setSuccessMessage(true);
+        toast.success("Your message has been sent successfully! Thank you!");
+        ScrollTrigger.refresh();
         setFormData({ name: "", email: "", message: "" });
       },
       (error) => {
         setIsSubmitting(false);
         console.error("EmailJS error:", error);
-        alert("Failed to send message. Please try again later.");
+        toast.error("Failed to send message. Please try again later.");
       }
     );
   };
@@ -110,12 +84,6 @@ const ContactSection = ({ id }: { id: string }) => {
         <h2 className="contact-title text-base sm:text-lg md:text-xl lg:text-2xl text-center justify-center font-bold text-fuchsia-300 font-playfair flex items-center gap-2">
           Get in Touch
         </h2>
-        {successMessage && (
-          <div className="success-message text-center text-sm sm:text-base text-emerald-400 bg-emerald-900/20 p-2 sm:p-3 rounded-lg">
-            Your message has been sent successfully!
-            <p>Thank You!</p>
-          </div>
-        )}
         <form
           onSubmit={handleSubmit}
           className=" mx-2 sm:mx-4 flex flex-col gap-4 sm:gap-5"
