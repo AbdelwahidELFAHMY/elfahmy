@@ -2,16 +2,13 @@
 
 "use client";
 
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import HeroSection from "../components/HeroSection";
 import AboutSection from "../components/AboutSection";
-import ExpertiseSection from "../components/SkillsSection";
 import SkillsSection from "../components/SkillsSection";
 import ExperienceSection from "../components/ExperienceSection";
 import ProjectsSection from "../components/ProjectsSection";
-import TestimonialsSection from "../components/TestimonialsSection";
 import Footer from "../components/Footer";
-import GradientGlowDecor from "@/components/GradientGlowDecor";
 import Navbar from "@/components/Navbar";
 import ContactSection from "@/components/ContactSection";
 
