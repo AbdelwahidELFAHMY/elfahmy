@@ -8,7 +8,7 @@ import emailjs from "@emailjs/browser";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ContactSection = ( { id }: { id: string }) => {
+const ContactSection = ({ id }: { id: string }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -18,7 +18,6 @@ const ContactSection = ( { id }: { id: string }) => {
   const [successMessage, setSuccessMessage] = useState(false);
 
   useEffect(() => {
-
     gsap.fromTo(
       ".contact-title",
       {
@@ -34,7 +33,7 @@ const ContactSection = ( { id }: { id: string }) => {
         ease: "power3.out",
         scrollTrigger: {
           trigger: ".form-container",
-          start: "top 90%", 
+          start: "top 90%",
           toggleActions: "restart none none none",
         },
       }
@@ -68,13 +67,16 @@ const ContactSection = ( { id }: { id: string }) => {
     };
   }, [successMessage]);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     setIsSubmitting(true);
 
     const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
@@ -96,8 +98,10 @@ const ContactSection = ( { id }: { id: string }) => {
   };
 
   return (
-    <section id={id} className="w-full max-w-7xl mx-auto my-12 sm:my-16 md:my-20 px-6 sm:px-8 lg:px-10 relative">
-
+    <section
+      id={id}
+      className="w-full max-w-7xl mx-auto my-12 sm:my-16 md:my-20 px-6 sm:px-8 lg:px-10 relative"
+    >
       <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-blue-400 mb-6 sm:mb-8 md:mb-12 font-playfair flex gap-2 sm:gap-3 text-left items-center justify-start">
         <Mail className="text-fuchsia-300 w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
         <span>Mail Me</span>
