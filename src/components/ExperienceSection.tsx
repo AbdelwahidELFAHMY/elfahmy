@@ -51,7 +51,7 @@ const work = [
   },
 ];
 
-const ExperienceSection = ({ id }) => {
+const ExperienceSection = ( id : string) => {
   useEffect(() => {
     const educationTimelines = gsap.utils.toArray(".education .timeline-item");
     const workTimelines = gsap.utils.toArray(".work .timeline-item");

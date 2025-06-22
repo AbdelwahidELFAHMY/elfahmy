@@ -2,9 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 import { FileDownIcon, Heart } from "lucide-react";
 import Image from "next/image";
 
-const NAME = "ABDELWAHID EL-FAHMY";
+const NAME : string = "ABDELWAHID EL-FAHMY";
 
-const HeroSection = ({ id }) => {
+const HeroSection = ( id :string) => {
   const [displayedName, setDisplayedName] = useState("");
   const [typingDone, setTypingDone] = useState(false);
   const nameRef = useRef<HTMLSpanElement>(null);

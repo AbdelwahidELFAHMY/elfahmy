@@ -8,7 +8,7 @@ import emailjs from "@emailjs/browser";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ContactSection = ({ id }) => {
+const ContactSection = ( id :string) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
