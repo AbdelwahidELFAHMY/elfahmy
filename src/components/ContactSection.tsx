@@ -5,7 +5,7 @@ import { Mail, MessageSquare, Send, User2 } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import emailjs from "@emailjs/browser";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 gsap.registerPlugin(ScrollTrigger);
 
