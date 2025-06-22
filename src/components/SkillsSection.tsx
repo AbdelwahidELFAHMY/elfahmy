@@ -54,9 +54,9 @@ const skillCategories = [
   },
 ];
 
-const SkillsSection = ( { id }: { id: string }) => {
+const SkillsSection = ({ id }: { id: string }) => {
   useEffect(() => {
-    gsap.utils.toArray(".category-header").forEach((header) => {
+    gsap.utils.toArray<HTMLElement>(".category-header").forEach((header) => {
       gsap.fromTo(
         header,
         { opacity: 0, x: -20 },
@@ -76,7 +76,7 @@ const SkillsSection = ( { id }: { id: string }) => {
       );
     });
 
-    gsap.utils.toArray(".skill-card").forEach((card) => {
+    gsap.utils.toArray<HTMLElement>(".skill-card").forEach((card) => {
       gsap.fromTo(
         card,
         { opacity: 0, scale: 0.9 },
@@ -115,7 +115,7 @@ const SkillsSection = ( { id }: { id: string }) => {
         style={{ opacity: 0.6, transform: "translateY(-50%)" }}
       />
       <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-blue-400 mb-6 sm:mb-8 md:mb-12 font-playfair flex gap-2 sm:gap-3 text-left items-center justify-start">
-        <Code2 className="inline-block" size={30}  />
+        <Code2 className="inline-block" size={30} />
         Core Skills & Technologies
       </h3>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
@@ -123,7 +123,7 @@ const SkillsSection = ( { id }: { id: string }) => {
           <div key={category.category} className="category">
             <h4 className="category-header text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-emerald-500 mb-4 sm:mb-6 relative flex items-center gap-2">
               <div className="p-2 sm:p-3 rounded-full bg-neutral-700">
-                <category.icon className="text-amber-200" size={20}  />
+                <category.icon className="text-amber-200" size={20} />
               </div>
               {category.category}
             </h4>
