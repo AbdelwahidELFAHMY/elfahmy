@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { File, FileDownIcon, Heart } from "lucide-react";
+import { FileDownIcon, Heart } from "lucide-react";
 import Image from "next/image";
 
 const NAME = "ABDELWAHID EL-FAHMY";

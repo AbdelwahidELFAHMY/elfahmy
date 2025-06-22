@@ -28,7 +28,7 @@ const AboutSection = ({ id }) => (
       <div className="text-justify text-gray-200 space-y-3 sm:space-y-4 leading-relaxed animate-fade-in-up text-sm sm:text-base lg:text-lg">
         Hi there!👋
         <p>
-          I'm{" "}
+          I&#39;m{" "}
           <span className="font-semibold bg-clip-text uppercase text-shadow-blue-500 tracking-wider text-indigo-300">
             Abdelwahid El-Fahmy
           </span>
@@ -44,7 +44,7 @@ const AboutSection = ({ id }) => (
           </span>
         </p>
         <p className="group flex items-center gap-2 text-fuchsia-300 font-medium cursor-pointer hover:text-fuchsia-200 transition-colors text-sm sm:text-base">
-          Let's connect and innovate together!
+          Let&#39;s connect and innovate together!
         </p>
       </div>
     </div>

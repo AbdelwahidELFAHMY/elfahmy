@@ -91,7 +91,7 @@ const Navbar = () => {
         {/* Logo */}
         <div className="flex items-center gap-2">
           <span className="text-sm sm:text-base md:text-lg font-bold text-gray-100 font-playfair tracking-tight">
-            L'FHMY
+            L&#39;FHMY
           </span>
         </div>
 

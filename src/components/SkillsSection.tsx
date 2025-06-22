@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { Code2, Database, Layers, Terminal, Wrench } from "lucide-react";
+import { Code2, Database, Layers, Wrench } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import GradientGlowDecor from "./GradientGlowDecor";
