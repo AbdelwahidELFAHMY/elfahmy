@@ -39,7 +39,7 @@ const AboutSection = ( { id }: { id: string }) => (
           requirements gathering and design, to implementation, testing, and deployment, using modern technology stacks,
           with a strong focus on clean architecture and development best practices.
           <span className="block mt-2">
-            Currently, I am looking for a final-year internship where I can apply my technical expertise, contribute to
+            Currently, I am looking for an End-of-Study internship where I can apply my technical expertise, contribute to
             concrete projects, and grow in a collaborative, agile environment.
           </span>
         </p>
