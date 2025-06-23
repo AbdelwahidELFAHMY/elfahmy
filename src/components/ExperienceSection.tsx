@@ -14,7 +14,7 @@ const education = [
     title: "Software Engineering – Final Year",
     org: "ENSA Agadir",
     date: "2023 | 2026",
-    desc: "3-years engineering program covering: Java/JEE/Spring ecosystems, software architecture, database administration (Oracle), network/system administration, and full-stack development. Combines theoretical foundations with practical project-based learning.",
+    desc: "3-years engineering program covering: Java/JEE/Spring ecosystems, software architecture, database administration (OracleDB), network/system administration, and full-stack development. Combines theoretical foundations with practical project-based learning.",
   },
   {
     icon: GraduationCap,
