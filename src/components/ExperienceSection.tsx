@@ -98,12 +98,12 @@ const ExperienceSection = ({ id }: { id: string }) => {
             ease: "power2.out",
             scrollTrigger: {
               trigger: timeline,
-              start: "top 90%",
+              start: "top 80%",
               end:
                 index < timelines.length - 1
                   ? `+=${targetHeight}`
                   : "bottom 90%",
-              scrub: 1,
+              scrub: 4.5,
               toggleActions: "play none none none",
               onUpdate: (self) => {
                 if (self.progress > 0.95) {
