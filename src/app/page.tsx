@@ -26,7 +26,6 @@ const Home = () => {
       <AboutSection id="about" />
       <ExperienceSection id="experience"/>
       <SkillsSection id="skills" />
-      
       <ProjectsSection  id="projects" />
       <ContactSection  id="contact"/>
       <Footer />

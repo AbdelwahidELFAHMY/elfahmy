@@ -1,10 +1,12 @@
+"use client";
+
 import React, { useEffect, useRef, useState } from "react";
-import { FileDownIcon, Heart } from "lucide-react";
+import { FileDownIcon } from "lucide-react";
 import Image from "next/image";
 
-const NAME : string = "ABDELWAHID EL-FAHMY";
+const NAME: string = "ABDELWAHID EL-FAHMY";
 
-const HeroSection = ( { id }: { id: string }) => {
+const HeroSection = ({ id }: { id: string }) => {
   const [displayedName, setDisplayedName] = useState("");
   const [typingDone, setTypingDone] = useState(false);
   const nameRef = useRef<HTMLSpanElement>(null);
@@ -12,17 +14,23 @@ const HeroSection = ( { id }: { id: string }) => {
   useEffect(() => {
     let current = 0;
     let mounted = true;
+
     function type() {
       if (!mounted) return;
       if (current <= NAME.length) {
         setDisplayedName(NAME.slice(0, current));
         current++;
-        setTimeout(type, 120);
+
+        // délai aléatoire (entre 80ms et 160ms) pour un effet plus naturel
+        const delay = Math.floor(Math.random() * 80) + 80;
+        setTimeout(type, delay);
       } else {
         setTypingDone(true);
       }
     }
+
     type();
+
     return () => {
       mounted = false;
     };
@@ -33,12 +41,11 @@ const HeroSection = ( { id }: { id: string }) => {
       id={id}
       className="relative mt-10 sm:mt-8 md:mt-10 max-w-full my-10 sm:min-h-[70vh] flex flex-col md:flex-row items-center justify-center gap-6 sm:gap-8 md:gap-14 px-4 sm:px-6 md:px-8 py-8 sm:py-10 md:py-14 overflow-hidden"
     >
+      {/* Glow background */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 z-0"
-        style={{
-          overflow: "hidden",
-        }}
+        style={{ overflow: "hidden" }}
       >
         <div
           className="absolute left-[-20%] sm:left-[-10%] top-1/3 h-1/2 w-[240%] sm:w-[220%] opacity-20 sm:opacity-25 blur-2xl sm:blur-3xl animate-rightness-glow"
@@ -48,6 +55,8 @@ const HeroSection = ( { id }: { id: string }) => {
           }}
         />
       </div>
+
+      {/* Photo */}
       <div className="z-10 flex-shrink-0 justify-center animate-fade-in">
         <Image
           loading="lazy"
@@ -59,30 +68,24 @@ const HeroSection = ( { id }: { id: string }) => {
           height={200}
         />
       </div>
-      <div className="z-10 flex flex-col gap-10 items-center md:items-start  md:min-w-xl text-center md:text-left animate-fade-in">
+
+      {/* Text */}
+      <div className="z-10 flex flex-col gap-10 items-center md:items-start md:min-w-xl text-center md:text-left animate-fade-in">
         <div>
           <div className="flex flex-col items-center md:items-start w-full">
-            <h1 className="text-[26px] sm:text-4xl lg:text-5xl font-bold text-white drop-shadow  animate-slide-in-right flex items-center justify-center md:justify-start min-h-[1em]">
+            <h1 className="text-[26px] sm:text-4xl lg:text-5xl font-bold text-white drop-shadow animate-slide-in-right flex items-center justify-center md:justify-start min-h-[1em]">
               <span
                 aria-label={NAME}
+                style={{ fontFamily: "Consolas, monospace" }}
                 className="whitespace-pre font-mono"
                 ref={nameRef}
               >
                 {displayedName}
               </span>
               <span className="inline-block ml-1 h-[1.15em] w-[0.9ch] relative align-bottom">
-                {!typingDone ? (
+                {!typingDone && (
                   <span className="blinking-cursor align-bottom text-fuchsia-400 text-4xl sm:text-5xl select-none font-mono">
                     |
-                  </span>
-                ) : (
-                  <span className=" hidden sm:inline-block heart-fadein">
-                    <Heart
-                      className="text-fuchsia-400 align-bottom"
-                      size={40}
-                      strokeWidth={2}
-                      fill="#f472b6"
-                    />
                   </span>
                 )}
               </span>
@@ -95,7 +98,7 @@ const HeroSection = ( { id }: { id: string }) => {
               Software Engineering Student @ ENSA Agadir
             </h2>
             <p className="text-xs sm:text-sm lg:text-sm font-light text-gray-200 mb-2 animate-fade-in">
-              Java | Spring Boot | JUnit | React.js | Tailwind CSS | Scrum
+              Java | Spring Boot | JUnit | React.js | Tailwind CSS
             </p>
             <p className="text-xs sm:text-sm lg:text-sm font-light text-gray-200 animate-fade-in">
               Dedicated to developing scalable, efficient web solutions
