@@ -150,7 +150,7 @@ const HeroSection = ({ id }: { id: string }) => {
             </span>
           </a>
           <a
-            href="/api"
+            href="/api/resume"
             className="px-6 py-3 rounded-full border border-fuchsia-400/30 text-blue-300 bg-slate-800 font-medium text-base relative overflow-hidden group hover:border-fuchsia-400/60 transition-all duration-500"
             target="_blank"
             rel="noopener noreferrer"
