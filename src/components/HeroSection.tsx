@@ -152,7 +152,6 @@ const HeroSection = ({ id }: { id: string }) => {
           <a
             href="/api/resume"
             className="px-6 py-3 rounded-full border border-fuchsia-400/30 text-blue-300 bg-slate-800 font-medium text-base relative overflow-hidden group hover:border-fuchsia-400/60 transition-all duration-500"
-            target="_blank"
             rel="noopener noreferrer"
           >
             <span className="absolute inset-0 rounded-full border-2 border-purple-400/0 group-hover:border-purple-400/30 group-hover:animate-pulse-border transition-all duration-700"></span>
